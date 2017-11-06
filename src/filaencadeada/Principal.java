@@ -64,6 +64,7 @@ public class Principal {
         listaEncadeada.remover();
     }
     
+//Exercicio 3 lista 4
     private void removerPares(ListaEncadeada listaEncadeada){
         listaEncadeada.removerTodosPares();
     }
