@@ -4,6 +4,7 @@ public class ListaEncadeada {
     private No primeiro;
     private No ultimo;
     private No posicaoAtual;
+    private int tamanho = 0;
     
     /*
     ** Adiciona no fim da lista
@@ -18,6 +19,7 @@ public class ListaEncadeada {
             ultimo.setProximo(no);
             ultimo = no;
         }
+        tamanho++;
     }
     
     /*
@@ -33,6 +35,7 @@ public class ListaEncadeada {
             no.setProximo(primeiro);
             primeiro = no;
         }
+        tamanho++;
     }
     
     /*
@@ -54,7 +57,7 @@ public class ListaEncadeada {
     */
     
     public void removerTodosPares(){
-        int i = 0;
+        int i = 1, j=0;
         while(this.temProximo()){
             if(i%2==0){
                 removeNaPosicao(i);
@@ -96,22 +99,27 @@ public class ListaEncadeada {
     }
     
     public void removeNaPosicao(int posicao){
-        No predecessor = getNo(posicao-1);
-        No excluido = predecessor.getProximo();
-        predecessor.setProximo(excluido.getProximo());
-        excluido.setProximo(null);
+        try{
+            No predecessor = getNo(posicao-1);
+            No excluido = predecessor.getProximo();
+            predecessor.setProximo(excluido.getProximo());
+            //excluido.setProximo(null);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
     public No getNo(int posicao){ //retorna um nó na posição desejada
-        No noAtual;
-        if((posicao < 1) || (primeiro == null)){
+        No noAtual;  
+        if((posicao < 1) || (getPosicaoAtual() == null)){
             return null;
         }else{
             noAtual = primeiro;
             while(posicao>1){
                 noAtual = noAtual.getProximo();
-                if(noAtual== null)
+                if(noAtual == null){
                     return null;
+                }
                 posicao--;
             }
             return noAtual;
