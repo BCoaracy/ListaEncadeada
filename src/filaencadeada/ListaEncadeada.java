@@ -46,10 +46,30 @@ public class ListaEncadeada {
             no.setProximo(null);
         }else{
             primeiro = ultimo = null;
+        }    
+    }
+    
+    /*
+     *Remover chaves pares
+    */
+    
+    public void removerTodosPares(){
+        int i = 0;
+        while(this.temProximo()){
+            if(i%2==0){
+                removeNaPosicao(i);
+            }
+            i++;
         }
         
     }
     
+    private void removeAtual(){
+        No no = new No();
+        no = this.posicaoAtual;
+        no.setProximo(null);
+        no.getValor();
+    }
     
     private No recuperarPenultimo(No no){
         if(no.getProximo().equals(ultimo)){
@@ -73,6 +93,29 @@ public class ListaEncadeada {
     
     public No getPosicaoAtual(){
         return this.posicaoAtual;
+    }
+    
+    public void removeNaPosicao(int posicao){
+        No predecessor = getNo(posicao-1);
+        No excluido = predecessor.getProximo();
+        predecessor.setProximo(excluido.getProximo());
+        excluido.setProximo(null);
+    }
+    
+    public No getNo(int posicao){ //retorna um nó na posição desejada
+        No noAtual;
+        if((posicao < 1) || (primeiro == null)){
+            return null;
+        }else{
+            noAtual = primeiro;
+            while(posicao>1){
+                noAtual = noAtual.getProximo();
+                if(noAtual== null)
+                    return null;
+                posicao--;
+            }
+            return noAtual;
+        }
     }
 }
 
