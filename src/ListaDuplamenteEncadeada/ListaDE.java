@@ -56,10 +56,49 @@ public class ListaDE {
         if(this.listaVazia()){
             return null;
         }else{
-            
+            nd = inicio;
+            inicio = inicio.getProximo();
+            inicio.setAnterior(null);
         }
         
         return nd;
+    }
+    public NoDuplo removeLast(){
+        NoDuplo nd = new NoDuplo();
+        if(this.listaVazia()){
+            return null;
+        }else{
+            nd = fim;
+            fim = fim.getAnterior();
+            fim.setProximo(null);
+        }
+        
+        return nd;
+    }
+    public NoDuplo removeX(Object x){
+        NoDuplo nd = new NoDuplo();
+        NoDuplo ndAux = new NoDuplo();
+        posicaoAtual = inicio;
+        if(this.listaVazia()){
+            return null;
+        }else{
+            while(this.temProximo()){
+                nd = posicaoAtual;
+                if(nd.getElemento().equals(x)){
+                    ndAux = nd.getAnterior();
+                    posicaoAtual = nd.getProximo();
+                    ndAux.setProximo(posicaoAtual);
+                    posicaoAtual.setAnterior(ndAux);
+                    nd.setAnterior(null);
+                    nd.setProximo(null);
+                    posicaoAtual=null;
+                    return nd;
+                }
+                posicaoAtual= posicaoAtual.getProximo();
+            }
+        }
+        posicaoAtual = null;
+        return null;
     }
     
     public boolean temProximo(){
