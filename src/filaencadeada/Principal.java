@@ -1,32 +1,46 @@
 
 package filaencadeada;
 
+import ListaDuplamenteEncadeada.ListaDE;
+
 public class Principal {
 
     public static void main(String[] args) {
-       ListaEncadeada listaEncadeada = new ListaEncadeada();
-       Principal principal = new Principal();
-       
-       //principal.adicionarPessoa(listaEncadeada);
-       
-       //principal.remover(listaEncadeada);
-       
-       //principal.adicionarPessoaFim(listaEncadeada);
-       //principal.remover(listaEncadeada);
-       
-       while(listaEncadeada.temProximo()){
-           System.out.println(listaEncadeada.getPosicaoAtual().getValor());
-       }
-       
-       principal.adicionarPessoa(listaEncadeada);
-       
-       principal.removerPares(listaEncadeada);
-       
-       System.out.println("\nRemoveu os parese?");
-       
-       while(listaEncadeada.temProximo()){
-           System.out.println(listaEncadeada.getPosicaoAtual().getValor());
-       }
+//       ListaEncadeada listaEncadeada = new ListaEncadeada();
+//       Principal principal = new Principal();
+//       
+//       //principal.adicionarPessoa(listaEncadeada);
+//       
+//       //principal.remover(listaEncadeada);
+//       
+//       //principal.adicionarPessoaFim(listaEncadeada);
+//       //principal.remover(listaEncadeada);
+//       
+//       while(listaEncadeada.temProximo()){
+//           System.out.println(listaEncadeada.getPosicaoAtual().getValor());
+//       }
+//       
+//       principal.adicionarPessoa(listaEncadeada);
+//       
+//       principal.removerPares(listaEncadeada);
+//       
+//       System.out.println("\nRemoveu os parese?");
+//       
+//       while(listaEncadeada.temProximo()){
+//           System.out.println(listaEncadeada.getPosicaoAtual().getValor());
+//       }
+
+        ListaDE lde = new ListaDE();
+        lde.AddStart(1);
+        lde.AddStart(2);
+        lde.AddStart(3);
+        lde.AddEnd(1);
+        lde.AddEnd(2);
+        lde.AddEnd(3);
+        
+        while(lde.temProximo()){
+            System.out.println("" + lde.getPosicao());
+        }
        
     }
     
